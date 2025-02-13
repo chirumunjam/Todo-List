@@ -1,0 +1,17 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<div style="text-align: center; margin-top: 100px;" >
+    <h1>{{ todo.id }}. {{ todo.task }}</h1>
+    <p>{{ todo.description }}</p>
+</div>
+<br>
+<div style="text-align: center;">
+    <a href="{% url 'edit' todo.id %}"><button class="btn btn-primary" type="button">Edit</button></a>
+    <form action="" method="POST" style="display: inline;">
+        {% csrf_token %}
+        <input type="hidden" name="task" value="{{ todo.task }}">
+        <button class="btn btn-success" type="submit">Mark As Done</button>
+    </form>
+</div>
+{% endblock content %}
